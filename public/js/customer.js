@@ -211,9 +211,16 @@ $(document).ready(
 				var td1 = $('#idAllTubes table').find('td'), td2 = $('#idAllTubesCopy table').find('td');
 				for (i = 0, il = td1.length; i < il; i++) {
 					if (td1[i].innerText != td2[i].innerText) {
+                        var before = parseInt(td2[i].innerText);
+                        var after = parseInt(td1[i].innerText);
+                        var newColor = "#afa";
+                        if (before < after)
+                            newColor = "#faa";
+
+
 						var $td1 = $(td1[i]), color = $td1.css('background-color');
 						$td1.css({
-							'background-color' : '#afa'
+							'background-color' : newColor
 						}).animate({
 							'background-color' : color
 						}, 500);
