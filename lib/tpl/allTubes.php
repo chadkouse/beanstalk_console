@@ -17,7 +17,7 @@
 				<?php if($item['key']=='name'):?>
 					<td><a href="?server=<?=$server?>&tube=<?=$item['value']?>"><?=$item['value']?></a></td>
 				<?php else:?>
-					<td><?=$item['value']?></td>
+					<td statname="<?=$item['key']?>"><?=$item['value']?></td>
 				<?php endif?>
 			<?php endforeach;?>
 			</tr>

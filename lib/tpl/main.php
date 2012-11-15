@@ -34,6 +34,7 @@
     <![endif]-->
   </head>
   <body data-spy="scroll" data-target=".subnav" data-offset="50">
+<canvas id='canvas' width='52px' height='52px' style='display: none;'></canvas>
   
 <!-- Header Line -->  
 	<div class="navbar navbar-fixed-top">
@@ -140,6 +141,7 @@
     <script src="./highlight/highlight.pack.js"></script>
     <script>hljs.initHighlightingOnLoad();</script>
     
+	<script src="./js/canvicon.packed.js"></script>
     <script src="./js/customer.js"></script>
   </body>
  </html>

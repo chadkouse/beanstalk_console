@@ -3,6 +3,7 @@ $(document).ready(
 
 			var timer;
             var doAutoRefresh=false;
+			var curColor="";
 
 			__init();
 
@@ -208,6 +209,7 @@ $(document).ready(
 			}
 
 			function updateTable() {
+				var favIconColor="green";
 				var td1 = $('#idAllTubes table').find('td'), td2 = $('#idAllTubesCopy table').find('td');
 				for (i = 0, il = td1.length; i < il; i++) {
 					if (td1[i].innerText != td2[i].innerText) {
@@ -217,7 +219,6 @@ $(document).ready(
                         if (before < after)
                             newColor = "#faa";
 
-
 						var $td1 = $(td1[i]), color = $td1.css('background-color');
 						$td1.css({
 							'background-color' : newColor
@@ -225,7 +226,29 @@ $(document).ready(
 							'background-color' : color
 						}, 500);
 					}
+					var $tube = $(td1[i]).parent();
+					var ready = parseInt($tube.children('td[statname="Ready"]').text());
+					var delayed = parseInt($tube.children('td[statname="Delayed"]').text());
+					var buried = parseInt($tube.children('td[statname="Buried"]').text());
+					var tubeName = $tube.attr("id").substr(5);
+					if (ready > 10000 || 
+						delayed > 100 ||
+						buried > 0)
+						favIconColor = "red"; 
 				}
+				changeFavIcon(favIconColor);
 			}
 
+            function changeFavIcon(colorname) {
+				if (curColor == colorname)
+					return;
+				var canvas = document.getElementById("canvas");
+				var ctx = canvas.getContext("2d");
+				var drawing = new Image() 
+				drawing.src = "img/icons/favicon_" + colorname + ".png" 
+				ctx.drawImage(drawing,0,0);
+				var c = new canvicon("canvas");
+				c.update();
+
+            }
 		});
