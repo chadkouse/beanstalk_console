@@ -230,7 +230,7 @@ $(document).ready(
 					var ready = parseInt(tube.children('td[statname="Ready"]').text());
 					var delayed = parseInt(tube.children('td[statname="Delayed"]').text());
 					var buried = parseInt(tube.children('td[statname="Buried"]').text());
-					var tubeName = $tube.attr("id").substr(5);
+					var tubeName = tube.attr("id").substr(5);
           if (buried > 0)
             favIconColor = "blue";
 					if (ready > 10000 ||
