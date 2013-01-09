@@ -226,20 +226,22 @@ $(document).ready(
 							'background-color' : color
 						}, 500);
 					}
-					var $tube = $(td1[i]).parent();
-					var ready = parseInt($tube.children('td[statname="Ready"]').text());
-					var delayed = parseInt($tube.children('td[statname="Delayed"]').text());
-					var buried = parseInt($tube.children('td[statname="Buried"]').text());
+					var tube = $(td1[i]).parent();
+					var ready = parseInt(tube.children('td[statname="Ready"]').text());
+					var delayed = parseInt(tube.children('td[statname="Delayed"]').text());
+					var buried = parseInt(tube.children('td[statname="Buried"]').text());
 					var tubeName = $tube.attr("id").substr(5);
-					if (ready > 10000 || 
-						delayed > 100 ||
+          if (buried > 0)
+            favIconColor = "blue";
+					if (ready > 10000 ||
+						(tube != 'smpEventFeed' && delayed > 100) ||
 						buried > 0)
 						favIconColor = "red"; 
 				}
 				changeFavIcon(favIconColor);
 			}
 
-            function changeFavIcon(colorname) {
+      function changeFavIcon(colorname) {
 				if (curColor == colorname)
 					return;
 				var canvas = document.getElementById("canvas");
