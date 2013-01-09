@@ -234,8 +234,7 @@ $(document).ready(
           if (buried > 0)
             favIconColor = "blue";
 					if (ready > 10000 ||
-						(tube != 'smpEventFeed' && delayed > 100) ||
-						buried > 0)
+						(tube != 'smpEventFeed' && delayed > 100))
 						favIconColor = "red"; 
 				}
 				changeFavIcon(favIconColor);
